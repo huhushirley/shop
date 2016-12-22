@@ -1,0 +1,7 @@
+web:
+  image: registry.digitwalk.com/shop:staging
+  ports:
+    - "3000:80"
+  environment:
+    - VIRTUAL_HOST=shop.example.com
+  restart: always
