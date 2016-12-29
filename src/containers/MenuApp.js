@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation, List } from 'components';
+import {
+  Navigation,
+  List,
+  Count,
+ } from 'components';
 import { menuActions } from 'actions';
 
 const menuItems = [
@@ -16,22 +20,22 @@ const menuItems = [
         pic: '',
       },
       {
-        name: '汉堡加可乐',
-        detail: '香辣味',
+        name: '充电堡加雪碧',
+        detail: '芥末味',
+        money: 30,
+        tip: '',
+        pic: '',
+      },
+      {
+        name: '汉堡加芬达',
+        detail: '原味',
         money: 26,
         tip: '',
         pic: '',
       },
       {
         name: '汉堡加可乐',
-        detail: '香辣味',
-        money: 26,
-        tip: '',
-        pic: '',
-      },
-      {
-        name: '汉堡加可乐',
-        detail: '香辣味',
+        detail: '香辣味加冰',
         money: 26,
         tip: '',
         pic: '',
@@ -78,10 +82,8 @@ const menuItems = [
 const MenuApp = () => (
   <div>
     <Navigation list={menuItems} />
-    <List />
-    <List />
-    <List />
-    <List />
+    <List list={menuItems} number={2} />
+    <Count money={100} />
   </div>
 );
 

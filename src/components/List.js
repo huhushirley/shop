@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import radium from 'radium';
-import { TableViewCell, Media } from 'react-uikit-web';
+import {
+  TableViewCell,
+  Media,
+  SvgIcon,
+} from 'react-uikit-web';
+import { AddIcon, DropdDownIcon } from 'paths';
+
 
 const styles = {
   root: {
@@ -18,33 +24,54 @@ const styles = {
     display: 'inline-block',
   },
   contentRight: {
-    marginLeft: '30%',
+    float: 'right',
+    marginRight: '20px',
     display: 'inline-block',
   },
 };
 
-const List = () => (
-  <div style={styles.root}>
-    <TableViewCell
-      style={styles.tableViewCell}
-      imageView={
-        <Media
-          src="http://qiniu.daguchuangyi.com/weather/live/check.png"
-          rounded
-          width={50}
-        />
-      }
-    >
-      <div style={styles.contentMiddle}>
-        <div>🍔</div>
-        <div>我很好吃😯</div>
-      </div>
-      <div style={styles.contentRight}>
-        <div>$26</div>
-        <div> + 0 - </div>
-      </div>
-    </TableViewCell>
+const List = ({ list, number }) => (
+  <div>
+  {list[0].group.map((menu, idx) =>
+    <div key={idx} style={styles.root}>
+      <TableViewCell
+        style={styles.tableViewCell}
+        imageView={
+          <Media
+            src="http://qiniu.daguchuangyi.com/weather/live/check.png"
+            rounded
+            width={50}
+          />
+        }
+      >
+        <div style={styles.contentMiddle}>
+          <div>{menu.name}</div>
+          <div>{menu.detail}</div>
+        </div>
+        <div style={styles.contentRight}>
+          <div>${menu.money}</div>
+          <div>
+            <SvgIcon
+              style={styles.icon}
+              path={AddIcon}
+              mb={1}
+            />{number}
+            <SvgIcon
+              style={styles.icon}
+              path={DropdDownIcon}
+              mb={1}
+            />
+          </div>
+        </div>
+      </TableViewCell>
+    </div>
+    )}
   </div>
 );
+
+List.propTypes = {
+  list: PropTypes.array.isRequired,
+  number: PropTypes.number.isRequired,
+};
 
 export default radium(List);
