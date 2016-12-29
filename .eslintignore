@@ -1,4 +1,5 @@
 server.js
+paths.js
 dist/*
 node_modules/*
 **/node_modules/*

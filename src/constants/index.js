@@ -7,4 +7,8 @@ module.exports = createConstants(
   // counter
   'INCREMENT',
   'DECREMENT',
+  // add food number
+  'ADD_FOOD_NUMBER',
+  // reduce food number
+  'REDUCE_FOOD_NUMBER',
 );
