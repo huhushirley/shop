@@ -30,7 +30,12 @@ const styles = {
   },
 };
 
-const List = ({ list, number }) => (
+const List = ({
+  list,
+  number,
+  onAddNumber,
+  onReduceNumber,
+}) => (
   <div>
   {list[0].group.map((menu, idx) =>
     <div key={idx} style={styles.root}>
@@ -55,10 +60,12 @@ const List = ({ list, number }) => (
               style={styles.icon}
               path={AddIcon}
               mb={1}
+              onClick={onAddNumber}
             />{number}
             <SvgIcon
               style={styles.icon}
               path={DropdDownIcon}
+              onClick={onReduceNumber}
               mb={1}
             />
           </div>
@@ -72,6 +79,8 @@ const List = ({ list, number }) => (
 List.propTypes = {
   list: PropTypes.array.isRequired,
   number: PropTypes.number.isRequired,
+  onAddNumber: PropTypes.func.isRequired,
+  onReduceNumber: PropTypes.func.isRequired,
 };
 
 export default radium(List);
